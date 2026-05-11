@@ -414,11 +414,11 @@ const products = [
 
       {/* Email */}
       <a
-        href="mailto:rashiherbalproducts@max.com"
+        href="mailto:rashi@rashiherbals.com"
         className="flex items-center gap-2 text-gray-300 hover:text-green-400 transition"
       >
         <Mail className="w-6 h-6" />
-        <span>rashiherbalproducts@max.com</span>
+        <span>rashi@rashiherbals.com</span>
       </a>
 
     </div>
