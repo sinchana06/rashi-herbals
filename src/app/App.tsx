@@ -52,7 +52,7 @@ export default function App() {
     }
   ];
   const [view, setView] = useState<'home' | 'catalog'>('home');
-
+  const [selectedProduct, setSelectedProduct] = useState(null);
    useEffect(() => {
     window.scrollTo({
       top: 0,
@@ -92,7 +92,13 @@ export default function App() {
           <div className="absolute inset-0 bg-black/10" />
         </div>
         <div className="max-w-7xl mx-auto text-center relative z-10">
-          <img src={rashiHerbalsImage} alt="Rashi Herbals" className="mx-auto mb-8 w-full max-w-md" />
+          <div className="mx-auto mb-8 w-fit bg-white/80 shadow-lg p-6 rounded-2xl">
+  <img
+    src={rashiHerbalsImage}
+    alt="Rashi Herbals"
+    className="w-full max-w-md"
+  />
+</div>
           <div className="flex flex-wrap justify-center gap-4 mb-12">
             <div className="flex items-center gap-2 bg-white px-6 py-3 rounded-full shadow-md">
               <Shield className="w-5 h-5 text-green-600" />
@@ -120,12 +126,12 @@ export default function App() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {products.slice(0, 4).map((product) => (
-                <div key={product.id} className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow border border-green-100">
-                  <div className="h-40 overflow-hidden bg-gray-100">
+                <div key={product.id} onClick={() => setSelectedProduct(product)} className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition cursor-pointer border border-green-100">
+                  <div className="bg-gray-100 aspect-square flex items-center justify-center p-4">
                     <ImageWithFallback
                       src={product.image}
                       alt={product.name}
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                      className="max-w-full max-h-full object-contain hover:scale-105 transition-transform duration-300"
                     />
                   </div>
                   <div className="p-4">
@@ -222,7 +228,7 @@ export default function App() {
                   <ImageWithFallback
                     src={product.image}
                     alt={product.name}
-                    className="w-full h-full object-cover"
+                    className="max-h-full max-w-full object-contain"
                   />
                 </div>
                 <div className="flex-1">
@@ -277,7 +283,60 @@ export default function App() {
       </section>
       </>
       )}
+{selectedProduct && (
+  <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4">
 
+    <div className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto relative">
+
+      {/* Close Button */}
+      <button
+        onClick={() => setSelectedProduct(null)}
+        className="absolute top-4 right-4 text-gray-600 hover:text-black text-xl"
+      >
+        ✕
+      </button>
+
+      <div className="grid md:grid-cols-2 gap-8 p-8">
+
+        {/* Image */}
+        <div className="flex items-center justify-center bg-gray-100 rounded-xl p-6">
+          <img
+            src={selectedProduct.image}
+            alt={selectedProduct.name}
+            className="max-h-[400px] object-contain"
+          />
+        </div>
+
+        {/* Details */}
+        <div>
+          <h2 className="text-3xl font-bold mb-3">
+            {selectedProduct.name}
+          </h2>
+
+          <p className="text-gray-700 mb-4">
+            {selectedProduct.description}
+          </p>
+
+          <h4 className="font-semibold mb-2">Benefits:</h4>
+
+          <ul className="space-y-2 mb-6">
+            {selectedProduct.benefits.map((b, i) => (
+              <li key={i} className="flex gap-2">
+                <Check className="w-5 h-5 text-green-600" />
+                {b}
+              </li>
+            ))}
+          </ul>
+
+          <p className="text-3xl font-bold text-green-600">
+            {selectedProduct.price}
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+)}
       {/* Footer */}
 <footer className="bg-gray-900 text-white py-12 px-4 sm:px-6 lg:px-8">
   <div className="max-w-7xl mx-auto text-center">
