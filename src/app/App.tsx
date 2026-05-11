@@ -9,48 +9,92 @@ import ashwagandhaCapsulesImage from './assets/ashwagandha.png';
 import rashiHerbalsImage from './assets/rashi_herbals.png';
 import painBalmImage from './assets/pain_balm.png';
 export default function App() {
-  const products = [
-    {
-      id: 1,
-      name: "Night Express Gold",
-      price: "₹499",
-      description: "Designed to support vitality, endurance, and long-lasting energy for unforgettable intimate moments.",
-      benefits: ["Reduces stress & anxiety", "Boosts energy levels", "Improves sleep quality", "Enhances immunity"],
-      image: nightExpressGoldImage
-    },
-    {
-      id: 2,
-      name: "Ortho Roll On",
-      price: "₹130",
-      description: "Easy-to-apply pain relief roll-on helps ease muscle stiffness, joint discomfort, and body pain anytime, anywhere.",
-      benefits: ["Supports digestion", "Natural detoxification", "Rich in antioxidants", "Promotes regularity"],
-      image: orthoRollOnImage
-    },
-    {
-      id: 3,
-      name: "Himalayan Shilajit Capsules",
-      price: "₹450",
-      description: "Made with pure Himalayan Shilajith and packed in easy-to-consume vegetarian capsules for convenient daily use.",
-      benefits: ["Strengthens immunity", "Fever management", "Anti-inflammatory", "Liver support"],
-      image: shilajitCapsulesImage
-    },
-    {
-      id: 4,
-      name: "Ashwagandha Capsules",
-      price: "₹200",
-      description: "Designed to promote balance, energy, stamina, and overall wellness in a convenient vegetarian capsule form.",
-      benefits: ["High in Vitamin C", "Skin health", "Hair growth", "Metabolism boost"],
-      image: ashwagandhaCapsulesImage
-    },
-    {
-      id: 5,
-      name: "Pain Balm",
-      price: "₹50",
-      description: "Experience fast and soothing relief with Wild Deer Pain Balm — a powerful herbal balm specially crafted to help ease headaches, muscle soreness, body pain, cough, and cold discomfort. Its fast-action formula delivers comforting relief whenever you need it most.",
-      benefits: ["High in Vitamin C", "Skin health", "Hair growth", "Metabolism boost"],
-      image: painBalmImage
-    }
-  ];
+const products = [
+{
+  id: 1,
+  name: "Night Express Gold",
+  price: "₹499",
+  description:
+    "Herbal vitality supplement formulated to support stamina, energy, and overall wellness for improved performance and confidence.",
+  benefits: [
+    "Supports stamina & vitality",
+    "Boosts natural energy levels",
+    "Helps reduce stress & fatigue",
+    "Supports overall male wellness"
+  ],
+  quantity: "10 capsules per box",
+  shelfLife: "24 months",
+  image: nightExpressGoldImage
+},
+
+{
+  id: 2,
+  name: "Ortho Roll On",
+  price: "₹130",
+  description:
+    "Fast-acting herbal roll-on designed to provide convenient relief from muscle stiffness, joint pain, and everyday body discomfort.",
+  benefits: [
+    "Relieves muscle & joint pain",
+    "Reduces stiffness and soreness",
+    "Quick absorption formula",
+    "Easy roll-on application anytime"
+  ],
+  quantity: "50 ml bottle",
+  shelfLife: "36 months",
+  image: orthoRollOnImage
+},
+
+{
+  id: 3,
+  name: "Himalayan Shilajit Capsules",
+  price: "₹450",
+  description:
+    "Premium Himalayan Shilajit capsules formulated to support strength, endurance, and overall vitality.",
+  benefits: [
+    "Improves stamina & strength",
+    "Supports energy metabolism",
+    "Enhances immunity",
+    "Helps maintain overall wellness"
+  ],
+  quantity: "60 capsules per bottle",
+  shelfLife: "24 months",
+  image: shilajitCapsulesImage
+},
+
+{
+  id: 4,
+  name: "Ashwagandha Capsules",
+  price: "₹200",
+  description:
+    "Traditional Ayurvedic adaptogen known for promoting stress relief, better sleep, and balanced energy levels.",
+  benefits: [
+    "Helps manage stress",
+    "Supports better sleep quality",
+    "Improves energy & stamina",
+    "Supports mental wellness"
+  ],
+  quantity: "60 capsules per bottle",
+  shelfLife: "24 months",
+  image: ashwagandhaCapsulesImage
+},
+
+{
+  id: 5,
+  name: "Pain Balm",
+  price: "₹50",
+  description:
+    "Herbal pain relief balm designed for fast soothing comfort from headaches, muscle pain, cold, and body aches.",
+  benefits: [
+    "Provides quick pain relief",
+    "Relieves headache & body ache",
+    "Helps ease cold & congestion",
+    "Soothing herbal formulation"
+  ],
+  quantity: "10 g pack",
+  shelfLife: "36 months",
+  image: painBalmImage
+}
+];
   const [view, setView] = useState<'home' | 'catalog'>('home');
   const [selectedProduct, setSelectedProduct] = useState(null);
    useEffect(() => {
@@ -248,9 +292,13 @@ export default function App() {
                   </div>
 
                   <div className="bg-white p-4 rounded-lg">
-                    <p className="text-sm text-gray-600 mb-2"><span className="font-semibold">Quantity:</span> 60 capsules per bottle</p>
-                    <p className="text-sm text-gray-600"><span className="font-semibold">Shelf Life:</span> 24 months from manufacturing date</p>
-                  </div>
+                   <p className="text-sm text-gray-600 mb-2">
+  <span className="font-semibold">Quantity:</span> {product.quantity}
+</p>
+
+<p className="text-sm text-gray-600">
+  <span className="font-semibold">Shelf Life:</span> {product.shelfLife}
+</p></div>
                 </div>
 
                 <div className="flex-shrink-0 bg-white p-6 rounded-xl shadow-md self-start">
