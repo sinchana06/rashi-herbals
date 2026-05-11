@@ -2,12 +2,12 @@ import { useState, useEffect } from 'react';
 import { Leaf, Shield, Heart, Zap, Check, Instagram, Mail } from 'lucide-react';
 import { ImageWithFallback } from './components/figma/ImageWithFallback';
 import allProductsImage from './assets/all_products.jpeg';
-import nightExpressGoldImage from './assets/night_express_gold.jpeg';
-import orthoRollOnImage from './assets/roll_on.jpeg';
-import shilajitCapsulesImage from './assets/silajit.jpeg';
-import ashwagandhaCapsulesImage from './assets/ashwagandha.jpeg';
+import nightExpressGoldImage from './assets/night_express_gold.png';
+import orthoRollOnImage from './assets/roll_on.png';
+import shilajitCapsulesImage from './assets/shilajit.png';
+import ashwagandhaCapsulesImage from './assets/ashwagandha.png';
 import rashiHerbalsImage from './assets/rashi_herbals.png';
-import painBalmImage from './assets/pain_balm.jpeg';
+import painBalmImage from './assets/pain_balm.png';
 export default function App() {
   const products = [
     {
@@ -65,7 +65,7 @@ export default function App() {
       {/* Header */}
       <header className="bg-white shadow-sm sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex items-center justify-between">
+          <div className="flex flex-wrap items-center justify-between gap-3">
             <div className="flex items-center gap-2">
               <Leaf className="w-8 h-8 text-green-600" />
               <span className="text-xl font-semibold text-gray-900">Rashi Herbal Products</span>
@@ -82,7 +82,7 @@ export default function App() {
       {view === 'home' && (
       <>
       {/* Hero Section */}
-      <section className="relative overflow-hidden py-20 px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden py-12 sm:py-20 px-4 sm:px-6 lg:px-8">
         <div className="absolute inset-0 z-0">
           <ImageWithFallback
             src={allProductsImage}
@@ -92,7 +92,7 @@ export default function App() {
           <div className="absolute inset-0 bg-black/10" />
         </div>
         <div className="max-w-7xl mx-auto text-center relative z-10">
-          <div className="mx-auto mb-8 w-fit bg-white/80 shadow-lg p-6 rounded-2xl">
+          <div className="mx-auto mb-8 w-fit bg-white/80 shadow-lg p-4 sm:p-6 rounded-2xl">
   <img
     src={rashiHerbalsImage}
     alt="Rashi Herbals"
@@ -134,8 +134,8 @@ export default function App() {
                       className="max-w-full max-h-full object-contain hover:scale-105 transition-transform duration-300"
                     />
                   </div>
-                  <div className="p-4">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-1">{product.name}</h3>
+                  <div className="p-4 sm:p-5">
+                    <h3 className="text-base sm:text-lg font-semibold leading-tight text-gray-900 mb-1">{product.name}</h3>
                     <p className="text-gray-600 text-sm mb-2">{product.description}</p>
                     <span className="text-2xl font-bold text-green-600">{product.price}</span>
                   </div>
@@ -160,7 +160,7 @@ export default function App() {
       {view === 'home' && (
       <>
       {/* Benefits Section */}
-      <section id="benefits" className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-green-50 to-white">
+      <section id="benefits" className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-green-50 to-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Why Choose Rashi Herbal?</h2>
@@ -223,12 +223,12 @@ export default function App() {
 
           <div className="space-y-8">
             {products.map((product, index) => (
-              <div key={product.id} className={`flex flex-col md:flex-row gap-8 p-8 rounded-2xl ${index % 2 === 0 ? 'bg-green-50' : 'bg-gray-50'}`}>
-                <div className="w-full md:w-64 h-64 flex-shrink-0 rounded-xl overflow-hidden bg-white">
+              <div key={product.id} className={`flex flex-col md:flex-row gap-6 p-4 sm:p-8 rounded-2xl ${index % 2 === 0 ? 'bg-green-50' : 'bg-gray-50'}`}>
+                <div className="w-full md:w-64 h-64 flex-shrink-0 rounded-xl bg-white flex items-center justify-center p-4">
                   <ImageWithFallback
                     src={product.image}
                     alt={product.name}
-                    className="max-h-full max-w-full object-contain"
+                    className="max-h-full max-w-full object-contain mx-auto"
                   />
                 </div>
                 <div className="flex-1">
@@ -286,24 +286,24 @@ export default function App() {
 {selectedProduct && (
   <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4">
 
-    <div className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto relative">
+    <div className="bg-white rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto relative mx-auto">
 
       {/* Close Button */}
       <button
         onClick={() => setSelectedProduct(null)}
-        className="absolute top-4 right-4 text-gray-600 hover:text-black text-xl"
+        className="absolute top-3 right-3 text-gray-600 hover:text-black text-2xl p-2"
       >
         ✕
       </button>
 
-      <div className="grid md:grid-cols-2 gap-8 p-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-4 sm:p-8">
 
         {/* Image */}
         <div className="flex items-center justify-center bg-gray-100 rounded-xl p-6">
           <img
             src={selectedProduct.image}
             alt={selectedProduct.name}
-            className="max-h-[400px] object-contain"
+            className="max-h-[280px] sm:max-h-[400px] object-contain"
           />
         </div>
 
@@ -351,7 +351,7 @@ export default function App() {
     </p>
 
     {/* ✅ Social Icons */}
-    <div className="flex justify-center gap-6 mb-6">
+    <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-6">
 
       {/* Instagram */}
       <a
