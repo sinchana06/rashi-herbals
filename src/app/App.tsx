@@ -17,7 +17,7 @@ export default function App() {
       behavior: "smooth"
     });
   }, [view]);
-  const whatsappNumber = "8884764747";
+  const whatsappNumber = "+918884764747";
 
   const getWhatsAppLink = (productName: Product) => {
     const message = `Hello, I would like to order ${productName}. Please share details.`;

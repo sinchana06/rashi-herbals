@@ -12,7 +12,7 @@ export default function FeaturedProducts({
     setSelectedProduct,
 }: Props) {
 
-    const whatsappNumber = "8884764747";
+    const whatsappNumber = "+918884764747";
 
     const getWhatsAppLink = (productName: string) => {
         const message = `Hello, I would like to order ${productName}. Please share details.`;

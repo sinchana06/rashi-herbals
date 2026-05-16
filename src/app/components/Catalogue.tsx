@@ -7,7 +7,7 @@ type Props = {
 export default function Catalogue({
     setView,
 }: Props) {
-    const whatsappNumber = "8884764747";
+    const whatsappNumber = "+918884764747";
 
     const getWhatsAppLink = (product: Product) => {
         const message = `Hello, I would like to order ${product.name}. Please share details.`;
