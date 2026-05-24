@@ -1,71 +1,124 @@
-import { Leaf, Heart, Shield, Zap } from "lucide-react";
+import { useEffect, useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { ImageWithFallback } from "./ImageWithFallback";
-import allProductsImage from "../assets/all_products.jpeg";
-import rashiHerbalsImage from "../assets/rashi_herbals.png";
+import{useNavigate} from "react-router-dom";
+import offer1 from "../assets/offer1.png";
+import offer2 from "../assets/offer2.png";
+import offer3 from "../assets/offer3.png";
+import offer4 from "../assets/offer4.png";
+
+const images = [
+  {
+    src: offer1,
+    offerId: "",
+  },
+  {
+    src: offer2,
+    offerId: "offer2",
+  },
+  {
+    src: offer3,
+    offerId: "offer3",
+  },
+  {
+    src: offer4,
+    offerId: "offer4",
+  },
+];
 
 export default function Background() {
-    return (
-                  <section className="relative overflow-hidden py-12 sm:py-20 px-4 sm:px-6 lg:px-8">
-                    <div className="absolute inset-0 z-0">
-                      <ImageWithFallback
-                        src={allProductsImage}
-                        alt="All products background"
-                        className="w-full h-full object-cover opacity-20"
-                      />
-                      <div className="absolute inset-0 bg-black/10" />
-                    </div>
-                    <div className="max-w-7xl mx-auto text-center relative z-10">
-                      <div className="mx-auto mb-8 w-fit bg-white/80 shadow-lg p-4 sm:p-6 rounded-2xl">
-                        <img
-                          src={rashiHerbalsImage}
-                          alt="Rashi Herbals"
-                          className="w-full max-w-md"
-                        />
-                      </div>
-                      <div className="flex flex-wrap justify-center gap-4 mb-12">
-                        <div className="flex items-center gap-2 bg-white px-6 py-3 rounded-full shadow-md">
-                          <Shield className="w-5 h-5 text-green-600" />
-                          <span className="text-gray-700">100% Natural</span>
-                        </div>
-                        <div className="flex items-center gap-2 bg-white px-6 py-3 rounded-full shadow-md">
-                          <Heart className="w-5 h-5 text-green-600" />
-                          <span className="text-gray-700">Lab Tested</span>
-                        </div>
-                        <div className="flex items-center gap-2 bg-white px-6 py-3 rounded-full shadow-md">
-                          <Zap className="w-5 h-5 text-green-600" />
-                          <span className="text-gray-700">Certified Quality</span>
-                        </div>
-                      </div>
-                                    {/* Vision & Mission */}
-              <div className="grid md:grid-cols-2 gap-8">
+  const [current, setCurrent] = useState(0);
+const navigate = useNavigate();
+  // Auto slide
+  useEffect(() => {
+    const interval = setInterval(() => {
+      nextSlide();
+    }, 4000);
 
-                {/* Vision */}
-                <div className="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition">
-                  <div className="flex items-center gap-3 mb-4 text-green-700">
-                    <Leaf size={28} />
-                    <h3 className="text-2xl font-semibold">Vision</h3>
-                  </div>
-                  <p className="text-gray-700">
-                    To become a trusted and leading name in Ayurvedic wellness by empowering people
-                    to live healthier, more active, and naturally balanced lives.
-                  </p>
+    return () => clearInterval(interval);
+  }, [current]);
+
+  const nextSlide = () => {
+    setCurrent((prev) => (prev + 1) % images.length);
+  };
+
+  const prevSlide = () => {
+    setCurrent((prev) =>
+      prev === 0 ? images.length - 1 : prev - 1
+    );
+  };
+
+  return (
+    <section className="relative overflow-x-hidden overflow-y-visible pt-12 pb-0 px-4 sm:px-6 lg:px-8">
+
+      {/* Gradient Background */}
+      <div className="absolute top-0 left-0 w-full h-[250px] bg-[linear-gradient(90deg,#416d25,#00db90)] z-0" />
+
+      <div className="relative z-10 mx-auto">
+
+        {/* Carousel */}
+        <div className="relative flex items-center justify-center">
+
+          {/* Left Arrow */}
+          <button
+            onClick={prevSlide}
+            className="absolute top-25 left-20 z-20 bg-white/80 hover:bg-white p-3 rounded-full shadow-lg transition hover:scale-110"
+          >
+            <ChevronLeft size={24} />
+          </button>
+
+          {/* Slides */}
+          <div className="relative w-full h-[300px] flex justify-center overflow-visible">
+
+            {images.map((image, index) => (
+              <div
+                key={index}
+                className={`absolute w-[95%] transition-all duration-1000 ease-in-out transform
+            ${index === current
+                    ? "opacity-100 translate-x-0 scale-100"
+                    : index < current
+                      ? "opacity-0 -translate-x-full scale-95"
+                      : "opacity-0 translate-x-full scale-95"
+                  }`}
+              >
+                <div className="relative top-0">
+
+                  {/* Bottom Shadow */}
+                  <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-[90%] h-10 bg-black/30 blur-2xl rounded-full" />
+
+                  {/* Image */}
+                  <ImageWithFallback
+                    src={image.src}
+                    alt={`Slide ${index + 1}`}
+                    onClick={() => navigate(`/offers?focus=${image.offerId}`)}
+                    className="
+                      relative
+                      mx-auto
+                      w-auto
+                      h-[280px]
+                      max-w-[1200px]
+                      shadow-2xl
+                      object-contain
+                      cursor-pointer
+                    "
+                  />
                 </div>
-
-                {/* Mission */}
-                <div className="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition">
-                  <div className="flex items-center gap-3 mb-4 text-green-700">
-                    <Heart size={28} />
-                    <h3 className="text-2xl font-semibold">Mission</h3>
-                  </div>
-                  <p className="text-gray-700">
-                    To deliver high-quality herbal products that support pain relief, enhance energy
-                    and stamina, and promote long-term wellness—harnessing the true power of Ayurveda
-                    in every product we offer.
-                  </p>
-                </div>
-
               </div>
-                    </div>
-                  </section>
-    )
+            ))}
+
+            {/* Smaller Spacer */}
+            <div className="h-[320px] sm:h-[420px] md:h-[500px]" />
+          </div>
+
+          {/* Right Arrow */}
+          <button
+            onClick={nextSlide}
+            className="absolute top-25 right-20 z-20 bg-white/80 hover:bg-white p-3 rounded-full shadow-lg transition hover:scale-110"
+          >
+            <ChevronRight size={24} />
+          </button>
+        </div>
+      </div>
+    </section>
+  );
 }

@@ -16,7 +16,9 @@ import spermatoHCapsulesImage from '../assets/spermato_h.png';
 export interface Product {
     id: number;
     name: string;
-    price: string;
+    price: number;
+    category: string;
+    discountedPrice?: number;
     description: string;
     image: string;
     quantity: string;
@@ -30,7 +32,9 @@ export const PRODUCTS: Product[] = [
     {
         id: 1,
         name: "Night Express Gold Capsules",
-        price: "₹300",
+        discountedPrice: 300,
+        price: 500,
+        category: "sexual",
         description:
             "Herbal vitality supplement formulated to support stamina, energy, and overall wellness for improved performance and confidence.",
         benefits: [
@@ -41,30 +45,34 @@ export const PRODUCTS: Product[] = [
         ],
         quantity: "10 capsules",
         shelfLife: "24 months",
-        image: nightExpressGoldImage
+        image: nightExpressGoldImage,
+        isBestSeller: true
     },
-    {
+ {
         id: 2,
-        name: "Ortho Roll On",
-        price: "₹130",
+        name: "Wild Deer Testorais Capsules",
+        price: 360,
+        category: "sexual",
         description:
-            "Fast-acting herbal roll-on designed to provide convenient relief from muscle stiffness, joint pain, and everyday body discomfort.",
+            "Herbal vitality supplement formulated to naturally support testosterone levels, stamina, strength, and male wellness.",
         benefits: [
-            "Relieves muscle & joint pain",
-            "Reduces stiffness and soreness",
-            "Quick absorption formula",
-            "Easy roll-on application anytime"
+            "Supports healthy testosterone levels",
+            "Improves stamina & performance",
+            "Enhances strength and energy",
+            "Promotes overall male vitality"
         ],
-        quantity: "50 ml",
+        quantity: "30 capsules",
         shelfLife: "36 months",
-        image: orthoRollOnImage,
+        image: testoraisCapsulesImage,
         isBestSeller: true
     },
 
     {
         id: 3,
         name: "Himalayan Shilajit Capsules",
-        price: "₹450",
+        price: 550,
+        category: "stamina",
+        discountedPrice: 450,
         description:
             "Premium Himalayan Shilajit capsules formulated to support strength, endurance, and overall vitality.",
         benefits: [
@@ -78,28 +86,30 @@ export const PRODUCTS: Product[] = [
         image: shilajitCapsulesImage,
         isBestSeller: true
     },
-
     {
         id: 4,
-        name: "Ashwagandha Capsules",
-        price: "₹200",
+        name: "Ortho Roll On",
+        price: 150,
+        category: "pain",
+        discountedPrice: 130,
         description:
-            "Traditional Ayurvedic adaptogen known for promoting stress relief, better sleep, and balanced energy levels.",
+            "Fast-acting herbal roll-on designed to provide convenient relief from muscle stiffness, joint pain, and everyday body discomfort.",
         benefits: [
-            "Helps manage stress",
-            "Supports better sleep quality",
-            "Improves energy & stamina",
-            "Supports mental wellness"
+            "Relieves muscle & joint pain",
+            "Reduces stiffness and soreness",
+            "Quick absorption formula",
+            "Easy roll-on application anytime"
         ],
-        quantity: "60 capsules",
-        shelfLife: "24 months",
-        image: ashwagandhaCapsulesImage
+        quantity: "50 ml",
+        shelfLife: "36 months",
+        image: orthoRollOnImage,
+        isBestSeller: true
     },
-
     {
         id: 5,
         name: "Wild Deer Pain Balm",
-        price: "₹50",
+        price: 50,
+        category: "pain",
         description:
             "Herbal pain relief balm designed for fast soothing comfort from headaches, muscle pain, cold, and body aches.",
         benefits: [
@@ -116,7 +126,8 @@ export const PRODUCTS: Product[] = [
     {
         id: 6,
         name: "Wild Deer Red Power Pain Balm",
-        price: "₹50",
+        price: 50,
+        category: "pain",
         description:
             "Fast-acting herbal pain relief balm formulated to provide instant soothing comfort for headaches, muscle pain, joint stiffness, and cold-related discomfort.",
         benefits: [
@@ -132,7 +143,8 @@ export const PRODUCTS: Product[] = [
     {
         id: 7,
         name: "Wild Deer Roll On",
-        price: "₹50",
+        price: 50,
+        category: "pain",
         description:
             "Convenient herbal roll-on designed for targeted pain relief. Ideal for headaches, neck pain, muscle soreness, and stress relief anytime, anywhere.",
         benefits: [
@@ -148,7 +160,8 @@ export const PRODUCTS: Product[] = [
     {
         id: 8,
         name: "Wild Deer Himalayan Shilajit Liquid",
-        price: "₹800",
+        price: 800,
+        category: "stamina",
         description:
             "Premium Himalayan Shilajit liquid enriched with natural minerals and fulvic acid to support stamina, strength, immunity, and overall vitality.",
         benefits: [
@@ -163,24 +176,27 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 9,
-        name: "Wild Deer Testorais Capsules",
-        price: "₹360",
+        name: "Ashwagandha Capsules",
+        price: 200,
+        category: "stamina",
         description:
-            "Herbal vitality supplement formulated to naturally support testosterone levels, stamina, strength, and male wellness.",
+            "Traditional Ayurvedic adaptogen known for promoting stress relief, better sleep, and balanced energy levels.",
         benefits: [
-            "Supports healthy testosterone levels",
-            "Improves stamina & performance",
-            "Enhances strength and energy",
-            "Promotes overall male vitality"
+            "Helps manage stress",
+            "Supports better sleep quality",
+            "Improves energy & stamina",
+            "Supports mental wellness"
         ],
-        quantity: "30 capsules",
-        shelfLife: "36 months",
-        image: testoraisCapsulesImage
+        quantity: "60 capsules",
+        shelfLife: "24 months",
+        image: ashwagandhaCapsulesImage
     },
+
     {
         id: 10,
         name: "Wild Deer Spermato H Capsules",
-        price: "₹420",
+        price: 420,
+        category: "sexual",
         description:
             "Advanced herbal formulation designed to support male reproductive health, sperm quality, vitality, and overall wellness.",
         benefits: [
@@ -196,7 +212,8 @@ export const PRODUCTS: Product[] = [
     {
         id: 11,
         name: "Multivitamin for Men",
-        price: "₹400",
+        price: 400,
+        category: "general",
         description:
             "Daily multivitamin supplement specially formulated for men to support energy, immunity, muscle health, and overall performance.",
         benefits: [
@@ -213,7 +230,8 @@ export const PRODUCTS: Product[] = [
     {
         id: 12,
         name: "Multivitamin for Women",
-        price: "₹400",
+        price: 400,
+        category: "general",
         description:
             "Complete multivitamin formula designed for women’s health, supporting immunity, skin health, hormonal balance, and daily nutrition.",
         benefits: [
@@ -230,7 +248,8 @@ export const PRODUCTS: Product[] = [
     {
         id: 13,
         name: "Probiotic",
-        price: "₹400",
+        price: 400,
+        category: "general",
         description:
             "Daily probiotic supplement containing beneficial bacteria to support gut health, digestion, and immunity.",
         benefits: [
@@ -247,7 +266,8 @@ export const PRODUCTS: Product[] = [
     {
         id: 14,
         name: "Marine Collagen Capsules",
-        price: "₹400",
+        price: 400,
+        category: "general",
         description:
             "High-quality marine collagen supplement that supports skin elasticity, hair strength, joint health, and anti-aging benefits.",
         benefits: [
