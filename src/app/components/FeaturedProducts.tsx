@@ -95,37 +95,51 @@ export default function FeaturedProducts() {
                     </div>
                 </div>
             </section>
-            <section id="products" data-section="products" className="py-10 flex justify-center">
-                <div className="flex flex-wrap gap-6">
-                    <NavButton
-                        label="All"
-                        active={selectedCategory === "all"}
-                        onClick={() => setSelectedCategory("all")}
-                    />
+            <section
+                id="products"
+                data-section="products"
+                className="py-10 flex justify-center"
+            >
 
-                    <NavButton
-                        label="Pain Relief"
-                        active={selectedCategory === "pain"}
-                        onClick={() => setSelectedCategory("pain")}
-                    />
-                    <NavButton
-                        label="General health"
-                        active={selectedCategory === "general"}
-                        onClick={() => setSelectedCategory("general")}
-                    />
+                {/* SCROLL WRAPPER */}
+                <div className="w-full max-w-7xl px-4 overflow-x-auto overflow-y-hidden whitespace-nowrap scrollbar-hide">
 
-                    <NavButton
-                        label="Sexual wellness"
-                        active={selectedCategory === "sexual"}
-                        onClick={() => setSelectedCategory("sexual")}
-                    />
+                    <div className="flex items-center gap-4 w-max mx-auto">
 
-                    <NavButton
-                        label="Stamina boosters"
-                        active={selectedCategory === "stamina"}
-                        onClick={() => setSelectedCategory("stamina")}
-                    />
+                        <NavButton
+                            label="All"
+                            active={selectedCategory === "all"}
+                            onClick={() => setSelectedCategory("all")}
+                        />
+
+                        <NavButton
+                            label="Pain Relief"
+                            active={selectedCategory === "pain"}
+                            onClick={() => setSelectedCategory("pain")}
+                        />
+
+                        <NavButton
+                            label="General health"
+                            active={selectedCategory === "general"}
+                            onClick={() => setSelectedCategory("general")}
+                        />
+
+                        <NavButton
+                            label="Sexual wellness"
+                            active={selectedCategory === "sexual"}
+                            onClick={() => setSelectedCategory("sexual")}
+                        />
+
+                        <NavButton
+                            label="Stamina boosters"
+                            active={selectedCategory === "stamina"}
+                            onClick={() => setSelectedCategory("stamina")}
+                        />
+
+                    </div>
+
                 </div>
+
             </section>
             <section className="py-1 px-4 sm:px-6 lg:px-8 bg-white">
                 <div className="max-w-7xl mx-auto">

@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { ImageWithFallback } from "./ImageWithFallback";
-import{useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 import offer1 from "../assets/offer1.png";
 import offer2 from "../assets/offer2.png";
 import offer3 from "../assets/offer3.png";
@@ -28,8 +29,10 @@ const images = [
 
 export default function Background() {
   const [current, setCurrent] = useState(0);
-const navigate = useNavigate();
-  // Auto slide
+
+  const navigate = useNavigate();
+
+  // Auto Slide
   useEffect(() => {
     const interval = setInterval(() => {
       nextSlide();
@@ -49,73 +52,122 @@ const navigate = useNavigate();
   };
 
   return (
-    <section className="relative overflow-x-hidden overflow-y-visible pt-12 pb-0 px-4 sm:px-6 lg:px-8">
-
+    <section className="relative overflow-hidden pt-6 sm:pt-10 md:pt-12 pb-0 px-2 sm:px-4 lg:px-8">
+      
       {/* Gradient Background */}
-      <div className="absolute top-0 left-0 w-full h-[250px] bg-[linear-gradient(90deg,#416d25,#00db90)] z-0" />
+      <div className="absolute top-0 left-0 w-full h-[180px] sm:h-[220px] md:h-[250px] bg-[linear-gradient(90deg,#416d25,#00db90)] z-0" />
 
-      <div className="relative z-10 mx-auto">
+      <div className="relative z-10 mx-auto w-full">
 
         {/* Carousel */}
-        <div className="relative flex items-center justify-center">
+        <div className="relative flex items-center justify-center w-full">
 
-          {/* Left Arrow */}
+          {/* LEFT ARROW */}
           <button
             onClick={prevSlide}
-            className="absolute top-25 left-20 z-20 bg-white/80 hover:bg-white p-3 rounded-full shadow-lg transition hover:scale-110"
+            className="
+              absolute
+              left-1 sm:left-3 md:left-10 lg:left-20
+              top-1/2 -translate-y-1/2
+              z-20
+              bg-white/80 hover:bg-white
+              p-1.5 sm:p-2 md:p-3
+              rounded-full
+              shadow-lg
+              transition
+              hover:scale-110
+            "
           >
-            <ChevronLeft size={24} />
+            <ChevronLeft size={18} className="sm:w-5 sm:h-5 md:w-6 md:h-6" />
           </button>
 
           {/* Slides */}
-          <div className="relative w-full h-[300px] flex justify-center overflow-visible">
+          <div className="relative w-full flex justify-center overflow-hidden">
 
             {images.map((image, index) => (
               <div
                 key={index}
-                className={`absolute w-[95%] transition-all duration-1000 ease-in-out transform
-            ${index === current
-                    ? "opacity-100 translate-x-0 scale-100"
-                    : index < current
+                className={`
+                  absolute
+                  w-full
+                  flex
+                  justify-center
+                  transition-all
+                  duration-700
+                  ease-in-out
+                  transform
+                  ${
+                    index === current
+                      ? "opacity-100 translate-x-0 scale-100"
+                      : index < current
                       ? "opacity-0 -translate-x-full scale-95"
                       : "opacity-0 translate-x-full scale-95"
-                  }`}
+                  }
+                `}
               >
-                <div className="relative top-0">
+                <div className="relative flex justify-center w-full">
 
-                  {/* Bottom Shadow */}
-                  <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-[90%] h-10 bg-black/30 blur-2xl rounded-full" />
+                  {/* Shadow */}
+                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[70%] sm:w-[80%] h-6 sm:h-8 md:h-10 bg-black/25 blur-2xl rounded-full" />
 
                   {/* Image */}
                   <ImageWithFallback
                     src={image.src}
                     alt={`Slide ${index + 1}`}
-                    onClick={() => navigate(`/offers?focus=${image.offerId}`)}
+                    onClick={() =>
+                      navigate(`/offers?focus=${image.offerId}`)
+                    }
                     className="
                       relative
-                      mx-auto
-                      w-auto
-                      h-[280px]
-                      max-w-[1200px]
-                      shadow-2xl
-                      object-contain
                       cursor-pointer
+                      object-contain
+                      mx-auto
+                      transition-all
+                      duration-500
+
+                      w-auto
+
+                      h-[160px]
+                      sm:h-[220px]
+                      md:h-[300px]
+                      lg:h-[380px]
+
+                      max-w-[92vw]
+                      sm:max-w-[88vw]
+                      md:max-w-[80vw]
+                      lg:max-w-[1100px]
+
+                      px-2
+                      sm:px-4
+
+                      drop-shadow-2xl
                     "
                   />
                 </div>
               </div>
             ))}
 
-            {/* Smaller Spacer */}
-            <div className="h-[320px] sm:h-[420px] md:h-[500px]" />
+            {/* Spacer */}
+            <div className="h-[180px] sm:h-[260px] md:h-[340px] lg:h-[430px]" />
           </div>
 
-          {/* Right Arrow */}
+          {/* RIGHT ARROW */}
           <button
             onClick={nextSlide}
-            className="absolute top-25 right-20 z-20 bg-white/80 hover:bg-white p-3 rounded-full shadow-lg transition hover:scale-110"
+            className="
+              absolute
+              right-1 sm:right-3 md:right-10 lg:right-20
+              top-1/2 -translate-y-1/2
+              z-20
+              bg-white/80 hover:bg-white
+              p-1.5 sm:p-2 md:p-3
+              rounded-full
+              shadow-lg
+              transition
+              hover:scale-110
+            "
           >
-            <ChevronRight size={24} />
+            <ChevronRight size={18} className="sm:w-5 sm:h-5 md:w-6 md:h-6" />
           </button>
         </div>
       </div>

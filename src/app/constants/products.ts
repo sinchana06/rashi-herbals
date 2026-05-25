@@ -159,7 +159,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         id: 8,
-        name: "Wild Deer Himalayan Shilajit Liquid",
+        name: "Himalayan Shilajit Liquid",
         price: 800,
         category: "stamina",
         description:
