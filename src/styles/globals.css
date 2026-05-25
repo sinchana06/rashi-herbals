@@ -1,0 +1,16 @@
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.clip-slant {
+  clip-path: polygon(0 0, 100% 0, 70% 100%, 0% 100%);
+}
+
+.clip-slant-reverse {
+  clip-path: polygon(30% 0, 100% 0, 100% 100%, 0% 100%);
+}
